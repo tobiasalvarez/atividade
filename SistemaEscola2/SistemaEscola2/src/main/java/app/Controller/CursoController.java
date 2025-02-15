@@ -52,7 +52,7 @@ public class CursoController {
 		}
 	  }
 		  
-		  @GetMapping("/finById/{id^}")
+		  @GetMapping("/findById/{id}")
 		  public ResponseEntity<Curso> findById(@PathVariable long id){
 			  try {
 				

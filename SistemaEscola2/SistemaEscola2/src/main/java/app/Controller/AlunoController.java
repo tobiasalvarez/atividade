@@ -52,7 +52,7 @@ public class AlunoController {
 		}
 	  }
 		  
-		  @GetMapping("/finById/{id^}")
+		  @GetMapping("/finById/{id}")
 		  public ResponseEntity<Aluno> findById(@PathVariable long id){
 			  try {
 				
