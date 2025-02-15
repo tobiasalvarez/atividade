@@ -27,7 +27,7 @@ public class Curso {
 	private long Id;
 	private String nome;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "curso")
 	private List<Turma> turma;
 	
 	

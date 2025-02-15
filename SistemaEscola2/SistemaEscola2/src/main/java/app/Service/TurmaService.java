@@ -17,12 +17,12 @@ public class TurmaService {
 
 	public String save(Turma turma) {
 		this.turmaRepository.save(turma);
-		return "Professor salvo com sucesso!!";	
+		return "Turma salva com sucesso!!";	
 	}
 	
 	public String delete(long Id) {
 		this.turmaRepository.deleteById(Id);
-		return "Professor deletado com sucesso!!";
+		return "Turma deletada com sucesso!!";
 	}
 	
 	public Turma findById(long Id) {
@@ -38,7 +38,7 @@ public class TurmaService {
 	public String update(Turma turma, long Id) {
 		turma.setId(Id);
 		this.turmaRepository.save(turma);
-		return "Professor atualizado com sucesso!!!";
+		return "Turma atualizado com sucesso!!!";
 	}
 	
 }

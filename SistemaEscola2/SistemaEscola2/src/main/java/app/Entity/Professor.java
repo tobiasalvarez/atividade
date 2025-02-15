@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,8 +33,9 @@ public class Professor {
 	private String CPF;
 	@Email(message = ("Email invalido!"))
 	private String Email;
+	@Column(nullable = true)
 	@Pattern(regexp = "^(\\S+\\s+\\S+.*)?$", message = "Especialidade deve ter pelo menos duas palavras.")
-	private String Especalidade;
+	private String Especialidade;
 	
 	@ManyToMany
 	private List<Turma> turma;
@@ -65,11 +67,11 @@ public class Professor {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public String getEspecalidade() {
-		return Especalidade;
+	public String getEspecialidade() {
+		return Especialidade;
 	}
-	public void setEspecalidade(String especalidade) {
-		Especalidade = especalidade;
+	public void setEspecialidade(String especalidade) {
+		Especialidade = especalidade;
 	}
 	public Professor(long id, String nome, String cPF, String email, String especalidade) {
 		super();
@@ -77,7 +79,7 @@ public class Professor {
 		Nome = nome;
 		CPF = cPF;
 		Email = email;
-		Especalidade = especalidade;
+		Especialidade = especalidade;
 	}
 	public Professor() {
 		super();
