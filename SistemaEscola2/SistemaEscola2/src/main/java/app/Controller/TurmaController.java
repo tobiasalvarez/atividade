@@ -31,6 +31,7 @@ public class TurmaController {
 		 String message = this.turmaService.save(turma);
 		 return new ResponseEntity<>(message, HttpStatus.CREATED);
 	} catch (Exception e) {
+		System.out.println(e.getMessage());
 		return new ResponseEntity<>("Deu erro... Nao salvo!", HttpStatus.BAD_REQUEST);
 		}	
 	 

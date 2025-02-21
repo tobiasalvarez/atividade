@@ -27,30 +27,10 @@ public class Curso {
 	private long Id;
 	private String nome;
 	
+	/*
 	@OneToMany(mappedBy = "curso")
-	private List<Turma> turma;
+	private List<Turma> turmas;*/
 	
-	
-	
-	public Curso() {}
-	
-	public Curso(int id, String nome) {
-		super();
-		Id = id;
-		this.nome = nome;
-	}
-	public long getId() {
-		return Id;
-	}
-	public void setId(long id) {
-		Id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	
 	
 	

@@ -1,5 +1,7 @@
 package app.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -76,6 +78,17 @@ public class CursoController {
 				
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 				
+			}
+		}
+		
+		@GetMapping("/findAll")
+		public ResponseEntity<List<Curso>> findAll(){
+			try {
+				List<Curso> lista = this.cursoService.findAll();
+				return new ResponseEntity<>(lista, HttpStatus.OK);
+			} catch (Exception e) {
+				// TODO: handle exception
+				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 			}
 		}
 }

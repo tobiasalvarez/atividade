@@ -35,7 +35,7 @@ public class AlunoService {
 		return "Aluno atualizado com sucesso!!!";
 	}
 	
-	public List<Aluno> findALL(){
+	public List<Aluno> findAll(){
 		List<Aluno> list = this.alunoRepository.findAll();
 		
 		return list;

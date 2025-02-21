@@ -38,7 +38,7 @@ public class CursoService {
 		return "Curso foi atualizado com sucesso!";
 	}
 	
-	public List<Curso> findALL(){
+	public List<Curso> findAll(){
 		List<Curso> list = this.cursoRepository.findAll();
 		return list;
 	}
