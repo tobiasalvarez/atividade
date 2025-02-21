@@ -40,7 +40,9 @@ public class AlunoService {
 		
 		return list;
 	}
-
 	
+	public List<Aluno> buscarAlunosPorTurma(String nomeTurma) {
+        return alunoRepository.findByTurmaNome(nomeTurma);
+    }
 	
 }

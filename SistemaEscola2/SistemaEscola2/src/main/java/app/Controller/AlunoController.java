@@ -88,11 +88,25 @@ public class AlunoController {
 				List<Aluno> lista = this.alunoService.findAll();
 				return new ResponseEntity<>(lista, HttpStatus.OK);
 			} catch (Exception e) {
-				// TODO: handle exception
+			
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 			}
 		}
 		
+		 @GetMapping("/por-turma")
+		    public ResponseEntity<List<Aluno>> buscarAlunosPorTurma(@RequestBody String nomeTurma) {
+		       try {
+				
+		    	   List<Aluno> alunos = alunoService.buscarAlunosPorTurma(nomeTurma);
+		    	   return new ResponseEntity<>(alunos, HttpStatus.OK);
+		    	   
+			} catch (Exception e) {
+				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			}
+		        
+		        
+		      
+		    }
 }
 		
 	

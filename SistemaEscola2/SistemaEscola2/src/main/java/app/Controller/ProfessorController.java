@@ -1,6 +1,7 @@
 package app.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.Entity.Professor;
@@ -72,15 +74,41 @@ public class ProfessorController {
 		try {
 			String message = this.professorService.update(professor, Id);
 			return new ResponseEntity<>(message, HttpStatus.OK);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			return new ResponseEntity<>("Deu erro... Nao salvo!", HttpStatus.BAD_REQUEST);
 		}
-	}
+}
 
 	
+	@GetMapping("/buscar")
+	public ResponseEntity<List<Professor>> buscarProfessores(@RequestBody String nome, @RequestBody String especialidade){
+			
+		try {
+			
+			// chama o serviço para buscar os professores
+			List<Professor> professores = professorService.buscarProfessoresPorNomeOuEspecialidade(nome, especialidade);
+			return new ResponseEntity<>(professores, HttpStatus.OK);
+			}
+	    catch (Exception e) {
+	    	return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	    }
+  }
 	
 	
-	
+	  public ResponseEntity<Professor> buscarProfessorPorEmail(@RequestParam String email){
+		  
+		  try {
+			  
+			  Optional<Professor> professorEmail = professorService.buscarProfessorPorEmail(email);
+			  return professorEmail.map(ResponseEntity::ok);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		
+		}
+	  }
 	
 	
 	

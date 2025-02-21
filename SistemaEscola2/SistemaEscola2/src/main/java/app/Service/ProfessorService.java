@@ -1,6 +1,7 @@
 package app.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,4 +42,11 @@ public class ProfessorService {
 		return "Professor atualizado com sucesso!!!";
 	}
 	
+	public List<Professor> buscarProfessoresPorNomeOuEspecialidade(String nome, String especialidade) {
+        return (List<Professor>) professorRepository.findByNomeStartingWithOrEspecialidadeStartingWith(nome, especialidade);
+    }
+
+	 public Optional<Professor> buscarProfessorPorEmail(String email) {
+	        return professorRepository.findByEmail(email);
+	    }
 }

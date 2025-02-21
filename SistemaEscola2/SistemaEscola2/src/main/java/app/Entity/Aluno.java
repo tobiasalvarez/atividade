@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -33,6 +34,7 @@ public class Aluno {
 	private String telefone;
 	
 	@ManyToOne
+	@JoinColumn(name = "turma_id") //Para buscar alunos pelo nome da turma
 	@JsonIgnoreProperties("alunos")
 	private Turma turma;
 	
