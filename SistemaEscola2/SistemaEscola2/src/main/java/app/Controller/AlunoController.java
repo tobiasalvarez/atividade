@@ -93,6 +93,17 @@ public class AlunoController {
 			}
 		}
 		
+		@GetMapping("/findByNomeStartingWithIgnoreCase")
+		public ResponseEntity<List<Aluno>> findByNomeStartingWithIgnoreCase(String nome){
+			try {
+				List<Aluno> lista = this.alunoService.findByNomeStartingWithIgnoreCase(nome);
+				return new ResponseEntity<>(lista, HttpStatus.OK);
+			} catch (Exception e) {
+			
+				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			}
+		}
+		
 		 @GetMapping("/por-turma")
 		    public ResponseEntity<List<Aluno>> buscarAlunosPorTurma(@RequestBody String nomeTurma) {
 		       try {

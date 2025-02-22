@@ -41,6 +41,11 @@ public class AlunoService {
 		return list;
 	}
 	
+	public List<Aluno> findByNomeStartingWithIgnoreCase(String nome){
+		List<Aluno> aluno = this.alunoRepository.findByNomeStartingWithIgnoreCase(nome);
+		return aluno;
+	}
+	
 	public List<Aluno> buscarAlunosPorTurma(String nomeTurma) {
         return alunoRepository.findByTurmaNome(nomeTurma);
     }
