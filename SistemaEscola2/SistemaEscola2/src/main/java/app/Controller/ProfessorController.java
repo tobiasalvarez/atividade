@@ -80,7 +80,7 @@ public class ProfessorController {
 		}
 }
 
-	
+	/*
 	@GetMapping("/buscar")
 	public ResponseEntity<List<Professor>> buscarProfessores(@RequestBody String nome, @RequestBody String especialidade){
 			
@@ -96,19 +96,19 @@ public class ProfessorController {
   }
 	
 	
-	  public ResponseEntity<Professor> buscarProfessorPorEmail(@RequestParam String email){
+	  public Optional<Professor> buscarProfessorPorEmail(@RequestParam String email){
 		  
 		  try {
 			  
 			  Optional<Professor> professorEmail = professorService.buscarProfessorPorEmail(email);
-			  return professorEmail.map(ResponseEntity::ok);
+			  return Optional<Professor> (professorEmail, HttpStatus.OK);
 			
 		} catch (Exception e) {
 			
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		
 		}
-	  }
+	  }*/
 	
 	
 	

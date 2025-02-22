@@ -41,4 +41,24 @@ public class TurmaService {
 		return "Turma atualizado com sucesso!!!";
 	}
 	
+	public List<Turma> findByAnoBetween (int ano1, int ano2){
+		List<Turma> lista = this.turmaRepository.findByAnoBetween(ano1, ano2);
+		return lista;
+	}
+	
+	public List<Turma> findBySemestreAndAno(String semestre, int ano){
+		List<Turma> lista = this.turmaRepository.findBySemestreAndAno(semestre, ano);
+		return lista;
+	}
+	
+	public List<Turma> findByNomeAndTurno(String nome, String turno){
+		List<Turma> turma = this.turmaRepository.findByNomeAndTurno(nome, turno);
+		return turma;
+	}
+	
+	public List<Turma> findByCursoNome(String nome){
+		List<Turma> turma = this.turmaRepository.findByCursoNome(nome);
+		return turma;
+	}
+	
 }

@@ -43,6 +43,10 @@ public class CursoService {
 		return list;
 	}
 
+	public Curso findByNomeIgnoreCase(String nome) {
+		Curso curso = this.cursoRepository.findByNomeIgnoreCase(nome);
+		return curso;
+	}
 	
 	
 	

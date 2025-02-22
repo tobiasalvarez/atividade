@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -47,7 +48,7 @@ public class Turma {
 	@OneToMany(mappedBy = "turma")
 	private List<Aluno> alunos;
 	
-	@ManyToOne 
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@NotNull(message = "o curso e obrigatorio para criar uma turma")
 	//@JoinTable(name = "curso_turma")
 	private Curso curso;
