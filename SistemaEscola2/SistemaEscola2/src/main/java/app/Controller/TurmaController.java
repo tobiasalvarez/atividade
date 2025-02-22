@@ -110,7 +110,7 @@ public class TurmaController {
 		}
 	}
 	
-	@GetMapping("/findByNomeCurso")
+	@GetMapping("/findByCursoNome")
 	public ResponseEntity<List<Turma>> findByCursoNome(@RequestParam String curso){
 		try {
 			List<Turma> turma = this.turmaService.findByCursoNome(curso);
