@@ -1,10 +1,8 @@
 package app.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
-import org.hibernate.mapping.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import app.Entity.Professor;
 
@@ -19,4 +17,6 @@ public interface ProfessorRepository extends JpaRepository<Professor, Long> {
     
 //procura pelo email exato    
     public Optional<Professor> findByEmail(String email);*/
+	
+	public Professor findByEmail (String email);
 }

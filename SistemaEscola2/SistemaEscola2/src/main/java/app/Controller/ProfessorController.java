@@ -32,6 +32,8 @@ public class ProfessorController {
 		 String message = this.professorService.save(professor);
 		 return new ResponseEntity<>(message, HttpStatus.CREATED);
 	} catch (Exception e) {
+		String erro = e.getMessage();
+		System.out.println(erro);
 		return new ResponseEntity<>("Deu erro... Nao salvo!", HttpStatus.BAD_REQUEST);
 		}	
 	 

@@ -3,6 +3,8 @@ package app.Service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +19,19 @@ public class ProfessorService {
 	
 
 	public String save(Professor professor) {
+		
+		//Regra 01 excecoes
+		Professor prof = this.professorRepository.findByEmail(professor.getEmail());
+		if (prof != null) {
+			throw new RuntimeException("Email ja cadastrado "+ prof.getEmail());
+		}else if (professor.getEmail().endsWith("@outlook.com")) {
+			throw new RuntimeException("Dominio de email nao permitido...");
+		}
+		
 		this.professorRepository.save(professor);
 		return "Professor salvo com sucesso!!";	
 	}
+	
 	
 	public String delete(long Id) {
 		this.professorRepository.deleteById(Id);
