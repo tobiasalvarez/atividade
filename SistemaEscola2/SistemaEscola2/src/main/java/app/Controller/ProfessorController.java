@@ -95,10 +95,10 @@ public class ProfessorController {
 	
 }
 	  
-	  @GetMapping("/findByNomeOrEspecialidadeStartingWith")
-	    public ResponseEntity<List<Professor>>findByNomeOrEspecialidadeStartingWith(@RequestParam String nome, @RequestParam String especialidade) {
+	  @GetMapping("/findByNomeStartingWithOrEspecialidadeStartingWith")
+	    public ResponseEntity<List<Professor>>findByNomeStartingWithOrEspecialidadeStartingWith(@RequestParam String nome, @RequestParam String especialidade) {
 		  try {
-			  List<Professor> prof = this.professorService.findByNomeOuEspecialidade(nome, especialidade);
+			  List<Professor> prof = this.professorService.findByNomeStartingWithOrEspecialidadeStartingWith(nome, especialidade);
 			  return new ResponseEntity<>(prof, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception

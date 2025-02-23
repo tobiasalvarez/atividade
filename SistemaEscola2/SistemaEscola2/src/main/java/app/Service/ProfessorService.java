@@ -24,7 +24,7 @@ public class ProfessorService {
 		Professor prof = this.professorRepository.findByEmail(professor.getEmail());
 		if (prof != null) {
 			throw new RuntimeException("Email ja cadastrado "+ prof.getEmail());
-		}else if (professor.getEmail().endsWith("@outlook.com")) {
+		}else if (professor.getEmail() != null && professor.getEmail().endsWith("@outlook.com")) {
 			throw new RuntimeException("Dominio de email nao permitido...");
 		}
 		
@@ -59,8 +59,8 @@ public class ProfessorService {
 	     return lista;
 	    }
 	 
-	 public List<Professor> findByNomeOuEspecialidade(String nome, String especialidade) {
-	        return professorRepository.findByNomeOrEspecialidadeStartingWith(nome, especialidade);
+	 public List<Professor> findByNomeStartingWithOrEspecialidadeStartingWith(String nome, String especialidade) {
+	        return professorRepository.findByNomeStartingWithOrEspecialidadeStartingWith(nome, especialidade);
 	    }
 
 	 public List<Professor> findByEmailNotContaining() {

@@ -105,11 +105,11 @@ public class AlunoController {
 			}
 		}
 		
-		 @GetMapping("/porTurma")
+		 @GetMapping("/buscarAlunosPorTurma")
 		    public ResponseEntity<List<Aluno>> buscarAlunosPorTurma(@RequestParam String nomeTurma) {
 		       try {
 				
-		    	   List<Aluno> alunos = alunoService.buscarAlunosPorTurma(nomeTurma);
+		    	   List<Aluno> alunos = alunoService.findByTurmaNome(nomeTurma);
 		    	   return new ResponseEntity<>(alunos, HttpStatus.OK);
 		    	   
 			} catch (Exception e) {
@@ -117,10 +117,10 @@ public class AlunoController {
 			}
 	}
 		 
-		 @GetMapping("/buscarTel")
+		 @GetMapping("/findByTelefoneContains")
 		 public ResponseEntity<List<Aluno>> findByTelefoneContains(@RequestParam String telefone) {
 		       try {
-				List<Aluno> alunos = alunoService.buscarPorTelefone(telefone);
+				List<Aluno> alunos = alunoService.findByTelefoneContains(telefone);
 				return new ResponseEntity<>(alunos, HttpStatus.OK);
 				
 			} catch (Exception e) {

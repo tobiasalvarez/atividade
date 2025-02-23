@@ -56,11 +56,11 @@ public class AlunoService {
 		return aluno;
 	}
 	
-	public List<Aluno> buscarAlunosPorTurma(String nomeTurma) {
+	public List<Aluno> findByTurmaNome(String nomeTurma) {
         return alunoRepository.findByTurmaNome(nomeTurma);
     }
 	
-	 public List<Aluno> buscarPorTelefone(String telefone) {
+	 public List<Aluno> findByTelefoneContains(String telefone) {
 	        return alunoRepository.findByTelefoneContains(telefone);
 	    }
 	
