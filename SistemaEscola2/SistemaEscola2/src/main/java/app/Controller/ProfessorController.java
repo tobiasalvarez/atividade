@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -82,10 +83,10 @@ public class ProfessorController {
 }
 
 
-	  @GetMapping("/semGmail")
-	    public ResponseEntity<List<Professor>> buscarProfSemGmail() {
+	  @GetMapping("/findByEmailNotContaining")
+	    public ResponseEntity<List<Professor>> findByEmailNotContaining() {
 		 try {
-			List<Professor> lista = this.professorService.buscarProfSemGmail();
+			List<Professor> lista = this.professorService.findByEmailNotContaining();
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -94,15 +95,17 @@ public class ProfessorController {
 	
 }
 	  
-	  @GetMapping("/buscarNomeEspecialidade")
-	    public List<Professor> buscarProfessores(@RequestParam String nome, @RequestParam String especialidade) {
-	        return professorService.findByNomeOuEspecialidade(nome, especialidade);
+	  @GetMapping("/findByNomeOrEspecialidadeStartingWith")
+	    public ResponseEntity<List<Professor>>findByNomeOrEspecialidadeStartingWith(@RequestParam String nome, @RequestParam String especialidade) {
+		  try {
+			  List<Professor> prof = this.professorService.findByNomeOuEspecialidade(nome, especialidade);
+			  return new ResponseEntity<>(prof, HttpStatus.OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
 	    }
 
-	  @GetMapping("/buscarSemGmail")
-	    public List<Professor> buscarProfessoresSemGmail() {
-	        return professorService.buscarProfSemGmail();
-	    }
 	  
 	  
 }
