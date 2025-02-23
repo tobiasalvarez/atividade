@@ -33,7 +33,8 @@ public class AlunoController {
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		} catch (Exception e) {
-			
+			String erro = e.getMessage();
+			System.out.println(erro);
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 			
 		}
