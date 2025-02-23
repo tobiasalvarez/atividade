@@ -18,4 +18,7 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
     
     // Metodo para buscar ALUNO pelo nome da turma - TESTAR!!!!!!
     public List<Aluno> findByTurmaNome(String nomeTurma);
+    
+    //buscar pelo cpf
+    public Aluno findByCpf(String cpf);
 }

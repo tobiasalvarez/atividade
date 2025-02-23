@@ -30,8 +30,9 @@ public class Aluno {
 	@NotBlank(message = "O nome e obrigatorio!!")
 	private String nome;
 	@CPF(message = "O CPF e obrigatorio")
-	private String CPF;
+	private String cpf;
 	private String telefone;
+	private boolean cadastroCompleto;
 	
 	@ManyToOne
 	@JoinColumn(name = "turma_id") //Para buscar alunos pelo nome da turma
