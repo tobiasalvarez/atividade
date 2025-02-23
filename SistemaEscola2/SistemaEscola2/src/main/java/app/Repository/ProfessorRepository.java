@@ -19,12 +19,9 @@ public interface ProfessorRepository extends JpaRepository<Professor, Long> {
     public Optional<Professor> findByEmail(String email);*/
 	
 	public Professor findByEmail (String email);
-	
-	//public List<Professor> findByEmailAndEspecialidade(String email, String especialide);
-	
+		
 	// Metodo  para buscar professor que não contenha @gmail.com
 	//O parametro emailDomain será o valor que você quer que não apareça no email
-	//buscarProfSemGmail
 	public List<Professor> findByEmailNotContaining(String emailDomain);
 	
     public List<Professor> findByNomeOrEspecialidadeStartingWith (String nome, String especialidade);
