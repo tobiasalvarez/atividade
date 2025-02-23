@@ -111,9 +111,9 @@ public class TurmaController {
 	}
 	
 	@GetMapping("/findByCursoNome")
-	public ResponseEntity<List<Turma>> findByCursoNome(@RequestParam String curso){
+	public ResponseEntity<List<Turma>> findByCursoNome(@RequestParam String nome){
 		try {
-			List<Turma> turma = this.turmaService.findByCursoNome(curso);
+			List<Turma> turma = this.turmaService.findByCursoNome(nome);
 			return new ResponseEntity<>(turma, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
