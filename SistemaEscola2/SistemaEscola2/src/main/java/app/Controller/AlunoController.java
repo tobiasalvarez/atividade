@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.Entity.Aluno;
-import app.Entity.Curso;
 import app.Service.AlunoService;
 
 @RestController
@@ -104,8 +104,8 @@ public class AlunoController {
 			}
 		}
 		
-		 @GetMapping("/por-turma")
-		    public ResponseEntity<List<Aluno>> buscarAlunosPorTurma(@RequestBody String nomeTurma) {
+		 @GetMapping("/porTurma")
+		    public ResponseEntity<List<Aluno>> buscarAlunosPorTurma(@RequestParam String nomeTurma) {
 		       try {
 				
 		    	   List<Aluno> alunos = alunoService.buscarAlunosPorTurma(nomeTurma);
@@ -114,12 +114,17 @@ public class AlunoController {
 			} catch (Exception e) {
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 			}
-		        
-		        
-		      
-		    }
-}
+	}
+		 
+		 @GetMapping("/buscarTel")
+		 public ResponseEntity<List<Aluno>> findByTelefoneContains(@RequestParam String telefone) {
+		       try {
+				List<Aluno> alunos = alunoService.buscarPorTelefone(telefone);
+				return new ResponseEntity<>(alunos, HttpStatus.OK);
+				
+			} catch (Exception e) {
+				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		
-	
-
-
+			}
+}
+}

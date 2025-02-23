@@ -53,12 +53,19 @@ public class ProfessorService {
 		this.professorRepository.save(professor);
 		return "Professor atualizado com sucesso!!!";
 	}
-	/*
-	public List<Professor> buscarProfessoresPorNomeOuEspecialidade(String nome, String especialidade) {
-        return (List<Professor>) professorRepository.findByNomeStartingWithOrEspecialidadeStartingWith(nome, especialidade);
-    }
+	
+	 public List<Professor> buscarProfSemGmail1() {
+		 List<Professor> lista = this.professorRepository.findByEmailNotContaining("@gmail.com");
+	     return lista;
+	    }
+	 
+	 public List<Professor> findByNomeOuEspecialidade(String nome, String especialidade) {
+	        return professorRepository.findByNomeOrEspecialidadeStartingWith(nome, especialidade);
+	    }
 
-	 public Optional<Professor> buscarProfessorPorEmail(String email) {
-	        return professorRepository.findByEmail(email);
-	    }*/
+	 public List<Professor> buscarProfSemGmail() {
+	        return professorRepository.findByEmailNotContaining("@gmail.com");
+	    }
+	 
+	 
 }

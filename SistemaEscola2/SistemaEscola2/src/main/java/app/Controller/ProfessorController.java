@@ -1,7 +1,6 @@
 package app.Controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -82,37 +81,28 @@ public class ProfessorController {
 		}
 }
 
-	/*
-	@GetMapping("/buscar")
-	public ResponseEntity<List<Professor>> buscarProfessores(@RequestBody String nome, @RequestBody String especialidade){
-			
-		try {
-			
-			// chama o serviço para buscar os professores
-			List<Professor> professores = professorService.buscarProfessoresPorNomeOuEspecialidade(nome, especialidade);
-			return new ResponseEntity<>(professores, HttpStatus.OK);
-			}
-	    catch (Exception e) {
-	    	return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-	    }
-  }
-	
-	
-	  public Optional<Professor> buscarProfessorPorEmail(@RequestParam String email){
-		  
-		  try {
-			  
-			  Optional<Professor> professorEmail = professorService.buscarProfessorPorEmail(email);
-			  return Optional<Professor> (professorEmail, HttpStatus.OK);
+
+	  @GetMapping("/semGmail")
+	    public ResponseEntity<List<Professor>> buscarProfSemGmail() {
+		 try {
+			List<Professor> lista = this.professorService.buscarProfSemGmail();
+			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
-			
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-		
 		}
-	  }*/
 	
-	
-	
-	
+}
+	  
+	  @GetMapping("/buscarNomeEspecialidade")
+	    public List<Professor> buscarProfessores(@RequestParam String nome, @RequestParam String especialidade) {
+	        return professorService.findByNomeOuEspecialidade(nome, especialidade);
+	    }
+
+	  @GetMapping("/buscarSemGmail")
+	    public List<Professor> buscarProfessoresSemGmail() {
+	        return professorService.buscarProfSemGmail();
+	    }
+	  
+	  
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import app.Entity.Aluno;
+import app.Entity.Professor;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
@@ -14,8 +15,14 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
     
     
     // Metodo para buscar pelo tefeloe -TESTAR!!!!!!
-    public List<Aluno> findByTelefoneContaining(String telefone);
+    //public List<Aluno> findByTelefoneContaining(String telefone);
     
     // Metodo para buscar ALUNO pelo nome da turma - TESTAR!!!!!!
-    public List<Aluno> findByTurmaNome(String nomeTurma);
+    public List<Aluno> findByTurmaNome(String turma);
+    
+    // Metodo para buscar aluno por qualquer parte do telefone
+    public List<Aluno> findByTelefoneContains(String telefone);
+    
+    
+    
 }

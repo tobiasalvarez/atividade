@@ -50,4 +50,8 @@ public class AlunoService {
         return alunoRepository.findByTurmaNome(nomeTurma);
     }
 	
+	 public List<Aluno> buscarPorTelefone(String telefone) {
+	        return alunoRepository.findByTelefoneContains(telefone);
+	    }
+	
 }
