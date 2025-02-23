@@ -15,6 +15,16 @@ public class AlunoService {
 	private AlunoRepository alunoRepository;
 	
 	public String save(Aluno aluno) {
+		Aluno alun = this.alunoRepository.findByCpf(aluno.getCpf());
+		if(alun != null) {
+			throw new RuntimeException("CPF ja cadastrado " + aluno.getCpf());
+		}
+		else if(aluno.getTelefone() == null) {
+			aluno.setCadastroCompleto(false);
+		}else {
+			aluno.setCadastroCompleto(true);
+		}
+		
 		this.alunoRepository.save(aluno);
 		return "Aluno salvo com sucesso!";
 	}
